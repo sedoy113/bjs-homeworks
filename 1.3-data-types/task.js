@@ -3,10 +3,10 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
 	// код для задачи №1 писать здесь
 
 	// корректность введенных данных
-	if (isNaN(percent) || isNaN(contribution) || isNaN(amount)) {
-		return console.log(`Параметр содержит неправильное значение, введите в полях ${percent},${contribution},${amount} числа`);
-	} else if (isNaN(date)) {
-		return console.log(`Параметр содержит неправильное значение, введите дату`);
+	if ((percent === '' || percent <= 0) || (contribution === '' || contribution < 0) || (amount === '' || amount <= 0)) {
+		return `Параметр содержит неправильное значение, введите в полях числа, они не должны быть отрицательными`;
+	} else if (date === undefined) {
+		return `Параметр содержит неправильное значение, введите дату`;
 	}
 
 
@@ -20,16 +20,23 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
 	let monthlySalary = amountReturnedBank * (percent + percent / (((1 + percent) ** numberPaidMonths) - 1));
 	// общая сумма, которую придется заплатить клиенту
 	let totalAmount = Number((monthlySalary * numberPaidMonths).toFixed(2));
+	if (totalAmount !== totalAmount) {
+		return `Проверьте все введенные данные`;
+	}
 	console.log(`Необходимо будет выплатить банку: ${totalAmount}`)
+
 	return totalAmount;
+
+
 
 }
 
 function getGreeting(name) {
+	console.log(typeof name)
 	// код для задачи №2 писать здесь
-	if (name === '' || name === undefined) {
+	if (name === undefined || name.replace(/\s/g, '') === '') {
 		name = 'Аноним';
 	}
-	console.log(`Привет, мир! Меня зовут ${name}.`)
+	console.log(`Привет, мир! Меня зовут ${name}.`);
 	return `Привет, мир! Меня зовут ${name}.`;
 }

@@ -8,8 +8,6 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
 	} else if (date === undefined) {
 		return `Параметр содержит неправильное значение, введите дату`;
 	}
-
-
 	// percent - 1/12 процентной ставки
 	percent = percent / 100 / 12;
 	// тело кредита: сумма, которую необходимо вернуть банку. (сумма кредита минус первоначальный взнос)
@@ -24,11 +22,8 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
 		return `Проверьте все введенные данные`;
 	}
 	console.log(`Необходимо будет выплатить банку: ${totalAmount}`)
-
+	console.log(`Ежемесячная оплата: ${monthlySalary.toFixed(2)}`)
 	return totalAmount;
-
-
-
 }
 
 function getGreeting(name) {
